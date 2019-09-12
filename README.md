@@ -1,2 +1,2 @@
-# Selenium-DatePicker
+# Selenium-DatetimePicker
 bootstrap-datetimepicker
