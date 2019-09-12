@@ -1,0 +1,118 @@
+    _webDriver.FindElement(By.XPath("//*[@id='Dob']")).Click();
+    var date_ent = "17-May-2005";
+    var date_ent1 = date_ent.Split('-');
+    var shipFDay = date_ent1[0];
+    var shipFMonth = date_ent1[1];
+    var shipFYear = date_ent1[2];
+    var date_pres = _webDriver.FindElement(By.XPath("//th[@title='Select Month']")).Text;
+    var dp = date_pres.Split(' ');
+    var month_pres = dp[0];
+    var year_pres = dp[1];
+    if (year_pres.Equals(shipFYear))
+    {
+        _webDriver.FindElement(By.XPath("//th[@title='Select Month']")).Click();
+        _webDriver.FindElement(By.XPath("//span[contains(.,'" + shipFMonth + "')]")).Click();
+        Thread.Sleep(5000);
+
+    }
+    else if (Convert.ToInt32(year_pres) > Convert.ToInt32(shipFYear))
+    {
+        _webDriver.FindElement(By.XPath("//th[@title='Select Month']")).Click();
+
+        while (2 > 1)
+        {
+            year_pres = _webDriver.FindElement(By.XPath("//th[@title='Select Year']")).Text;
+            if (year_pres.Equals(shipFYear, StringComparison.OrdinalIgnoreCase))
+            {
+                _webDriver.FindElement(By.XPath("//span[contains(.,'" + shipFMonth + "')]")).Click();
+                Thread.Sleep(5000);
+                break;
+            }
+            _webDriver.FindElement(By.XPath("//span[@title='Previous Year']")).Click();
+        }
+
+    }
+    else
+    {
+        _webDriver.FindElement(By.XPath("//th[@title='Select Month']")).Click();
+        while (2 > 1)
+        {
+            year_pres = _webDriver.FindElement(By.XPath("//th[@title='Select Year']")).Text;
+            if (year_pres.Equals(shipFYear, StringComparison.OrdinalIgnoreCase))
+            {
+                _webDriver.FindElement(By.XPath("//span[contains(.,'" + shipFMonth + "')]")).Click();
+                Thread.Sleep(5000);
+                break;
+            }
+            _webDriver.FindElement(By.XPath("//span[@title='Next Year']")).Click();
+        }
+    }
+
+    switch (shipFMonth)
+    {
+        case "Jan":
+            {
+                _webDriver.FindElement(By.XPath("//td[@data-day='01/" + shipFDay + "/" + shipFYear + "']")).Click();
+                break;
+            }
+
+        case "Feb":
+            {
+                _webDriver.FindElement(By.XPath("//td[@data-day='02/" + shipFDay + "/" + shipFYear + "']")).Click();
+                break;
+            }
+        case "Mar":
+            {
+                _webDriver.FindElement(By.XPath("//td[@data-day='03/" + shipFDay + "/" + shipFYear + "']")).Click();
+                break;
+            }
+        case "Apr":
+            {
+                _webDriver.FindElement(By.XPath("//td[@data-day='04/" + shipFDay + "/" + shipFYear + "']")).Click();
+                break;
+            }
+        case "May":
+            {
+                _webDriver.FindElement(By.XPath("//td[@data-day='05/" + shipFDay + "/" + shipFYear + "']")).Click();
+                break;
+            }
+        case "Jun":
+            {
+                _webDriver.FindElement(By.XPath("//td[@data-day='06/" + shipFDay + "/" + shipFYear + "']")).Click();
+                break;
+            }
+        case "Jul":
+            {
+                _webDriver.FindElement(By.XPath("//td[@data-day='07/" + shipFDay + "/" + shipFYear + "']")).Click();
+                break;
+            }
+        case "Aug":
+            {
+                _webDriver.FindElement(By.XPath("//td[@data-day='08/" + shipFDay + "/" + shipFYear + "']")).Click();
+                break;
+            }
+        case "Sep":
+            {
+                _webDriver.FindElement(By.XPath("//td[@data-day='09/" + shipFDay + "/" + shipFYear + "']")).Click();
+                break;
+            }
+        case "Oct":
+            {
+                _webDriver.FindElement(By.XPath("//td[@data-day='10/" + shipFDay + "/" + shipFYear + "']")).Click();
+                break;
+            }
+        case "Nov":
+            {
+                _webDriver.FindElement(By.XPath("//td[@data-day='11/" + shipFDay + "/" + shipFYear + "']")).Click();
+                break;
+            }
+        case "Dec":
+            {
+                _webDriver.FindElement(By.XPath("//td[@data-day='12/" + shipFDay + "/" + shipFYear + "']")).Click();
+                break;
+            }
+        default:
+            {
+                break;
+            }
+    }
